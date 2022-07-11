@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PROJECT(Web page)</title>
+	<link rel="stylesheet" type="text/css" href="project.css">
+	<link rel="icon" type="img/png" href="rguktlogo.png">
+	<style type="text/css">
+		#hor-nav{
+			background-color:skyblue;
+			width: 100%;
+			height: 50px;
+			position: absolute;
+			top: 106px;
+			left: 0px;
+		}
+		#ver-nav{
+			background-color:orange;
+			width: 200px;
+			height: 150px;
+			position: absolute;
+			top: 106px;
+			right:10px;
+			z-index: 1;
+		}
+		.showSlide {  
+            display: none  
+        }  
+            .showSlide img {  
+                width: 100%;  
+            }  
+        #slidercontainer {  
+        	width: 625px;
+        	height:400px ;
+        	z-index:-1;
+            position: relative;  
+            margin:absolute; 
+            top:170px; 
+            left: 354px;
+            border: 2px solid black;
+            border-radius: 15px;
+        }  
+        .left, .right {  
+            cursor: pointer;  
+            position: absolute;  
+            top: 50%;  
+            width: auto;  
+            padding: 16px;  
+            margin-top: -22px;  
+            color: white;  
+            font-weight: bold;  
+            font-size: 18px;  
+            transition: 0.6s ease;  
+            border-radius: 0 3px 3px 0;  
+        }  
+        .right {  
+            right: 0;  
+            border-radius: 3px 0 0 3px;  
+        }  
+            .left:hover, .right:hover {  
+                background-color: rgba(115, 115, 115, 0.8);  
+            }  
+        .content {  
+            color: #eff5d4;  
+            font-size: 30px;  
+            padding: 8px 12px;  
+            position: absolute;  
+            top: 10px;
+            width: 100%;  
+            text-align: center;  
+        }  
+        .active {  
+            background-color: #717171;  
+        }  
+        /* Fading animation */  
+        .fade {  
+            -webkit-animation-name: fade;  
+            -webkit-animation-duration: 1.5s;  
+            animation-name: fade;  
+            animation-duration: 1.5s;  
+        }  
+        @-webkit-keyframes fade {  
+            from {  
+                opacity: .4  
+            }  
+            to {  
+                opacity: 1  
+            }  
+        }  
+  
+        @keyframes fade {  
+            from {  
+                opacity: .4  
+            }  
+            to {  
+                opacity: 1  
+            }  
+        }
+        @media only screen and (max-width: 600px)
+		{
+			#hor-nav
+			{
+				visibility: hidden;
+			}
+		} 
+        #fil_ter
+		{
+		
+			background-color: yellow;
+			width: 350px;
+			height: 400px;
+			position: absolute;
+			top: 185px;
+			float: left;
+			display: inline-block;
+			overflow: scroll;
+			border: 2px solid black;
+            border-radius: 15px;
+		}
+		#fil_ter ol li
+		{
+			width: 150px;
+			margin-bottom: 3px;
+			font-size: 20px;
+		}
+		#fil_ter button
+		{
+			margin-left: 50px;
+		}
+		#fil_ter .delete
+		{
+		background-color: blue;
+		}
+		#fil_ter button:hover
+		{
+		background-color: red;
+		} 
+		#notifications
+		{
+		
+			background-color:greenyellow;
+			width: 350px;
+			height: 400px;
+			position: absolute;
+			top: 185px;
+			right: 0px;
+			display: inline-block;
+			overflow: scroll;
+			border: 2px solid black;
+            border-radius: 15px;
+		}
+		#student_regis{
+			background-color: lightblue;
+			height: 250px;
+			width: 350px;
+			position: absolute;
+			top:190px ;
+			left: 400px;
+			visibility: hidden;
+			z-index: 1;
+			border: 2px solid black;
+            border-radius: 15px;
+		}
+		#faculty_regis{
+			background-color: lightblue;
+			height: 250px;
+			width: 350px;
+			position: absolute;
+			top:190px ;
+			left: 400px;
+			visibility: hidden;
+			z-index: 1;
+			border: 2px solid black;
+            border-radius: 15px;
+		}
+		#exam_regis{
+			background-color: lightblue;
+			width: 700px;
+			position: absolute;
+			top:190px ;
+			left: 200px;
+			z-index:1;
+			visibility: hidden;
+			border: 2px solid black;
+            border-radius: 15px;
+            animation-name: slider;
+			animation-iteration-count: infinite;
+			animation-duration: 20s;
+			background-repeat: no-repeat;
+		}
+		#Address{
+			background-color:lavenderblush;
+			width: 900px;
+			position: absolute;
+			top:190px ;
+			left: 100px;
+			font-size: 15px;
+			z-index:-1;
+			visibility: hidden;
+			border: 2px solid black;
+            border-radius: 15px;
+		}
+		#map{
+			width: 1200px;
+			position: absolute;
+			top:190px ;
+			left: 100px;
+			font-size: 15px;
+			z-index: -1;
+			visibility: hidden;
+		}
+		#scrh ul li{
+			background-color: grey;
+			width: 150px;
+			list-style-type: none;
+			margin-bottom: 3px;
+		}
+		#scrh button{
+			margin-left: 50px;
+		}
+		#scrh .delete
+		{
+			background-color: blue;
+		}
+		#myform button:hover{
+			background-color: red;
+		}
+		#scrh button:hover{
+			background-color: red;
+		}
+		#clock
+		{
+			background-color:yellow;
+			font-size: 30px;
+			height: 50px;
+			width: 200px;
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			text-align: center;
+		}
+		#marquee{
+			background-color: black;
+			width: 100%;
+			color: white;
+			font-size: 20px;
+			position: absolute;
+			top: 155px;
+			left: 0px;
+		}
+		#ani{
+			position: absolute;
+			top: 0px;
+		}
+	</style>
+</head>
+<body id="body">
+	<h1 id="h1">RGUKT NUZVID</h1>
+	<figure>
+			<img id="developer" src="parvathi.jpg" title="Developer" onmouseover="invisible();" onmouseout="visible();" >
+			<b id="imname">Parvathi Kasimkota</b>
+	</figure>
+	<figure>
+	<img id="ver-nav-icon" src="dots.jpg" title="vertical-navigation" onclick="ver_nav_visible();" ondblclick="ver_nav_invisible();" >
+	</figure>
+<div id="ani"><img class="image" src="rguktlogo2.png" height="100px" width="100px"></div>
+<div id="clock" onload="SystemTime()"></div>
+<div id="marquee">
+	<marquee> Hii,Welcome to RGUKT NUZVID official website(Designed by Parvathi Kasimkota from CSE department RGUKT Nuzvid)</marquee>
+</div>
+<div id="hor-nav">
+<ul class="mainmenu">
+<li><a href="project.html" target="self" class="h"><img src="home.jpg" title="HOME"></a></li>
+<li><a href="#" onclick="exam_regis_visi();">Exam</a></li>
+<li><a href="#">Branches</a>
+<ul class="submenu1"><span>&#9660</span>
+<li><a href="#">ECE</a>
+<ul class="submenu11"><span>&#9660</span>
+<li><a href="#" onclick="faculty_regis();">Faculty</a></li>
+<li><a href="#"onclick="student_regis();">Student</a></li>
+</ul>
+</li>
+<li><a href="#">CSE</a>
+<ul class="submenu12"><span>&#9660</span>
+<li><a href="#" onclick="faculty_regis();">Faculty</a></li>
+<li><a href="#" onclick="student_regis();">Student</a></li>
+</ul>
+</li>
+<li><a href="#">MECH</a>
+<ul class="submenu13"><span>&#9660</span>
+<li><a href="#" onclick="faculty_regis();">Faculty</a></li>
+<li><a href="#" onclick="student_regis();">Student</a></li>
+</ul></li>
+<li><a href="#">CIVIL</a>
+<ul class="submenu14"><span>&#9660</span>
+<li><a href="#" onclick="faculty_regis();">Faculty</a></li>
+<li><a href="#" onclick="student_regis();">Student</a></li>
+</ul></li>
+<li><a href="#">CHEMICAL</a>
+<ul class="submenu15"><span>&#9660</span>
+<li><a href="#" onclick="faculty_regis();">Faculty</a></li>
+<li><a href="#" onclick="student_regis();">Student</a></li>
+</ul></li>
+<li><a href="#">EEE</a>
+<ul class="submenu16"><span>&#9660</span>
+<li><a href="#" onclick="faculty_regis();">Faculty</a></li>
+<li><a href="#" onclick="student_regis();">Student</a></li>
+</ul></li>
+</ul>
+</li>
+<li><img src="call.jpg" title="CONTACT"><!-- <img src="call.jpg" title="Contact"> -->
+<ul class="submenu2"><span>&#9660</span>
+<li><a href="#"onclick="address_visi();">Contact Details</a></li>
+<li><a href="#" onclick="map_visi();">Google Map</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="ver-nav">
+<ul class="mainmenu1">
+<li><a href="project.html" target="self" class="h"><img src="home.jpg" title="HOME"></a></li>
+<li><a href="#" onclick="exam_regis_visi();">Exam</a></li>
+<li><a href="#">Branches</a>
+<ul class="submenu3"><span>&#9660</span>
+<li><a href="#">ECE</a>
+<ul class="submenu111"><span>&#9660</span>
+<li><a href="#" onclick="faculty_regis();">Faculty</a></li>
+<li><a href="#" onclick="student_regis();">Student</a></li>
+</ul>
+</li>
+<li><a href="#">CSE</a>
+<ul class="submenu112"><span>&#9660</span>
+<li><a href="#" onclick="faculty_regis();">Faculty</a></li>
+<li><a href="#" onclick="student_regis();">Student</a></li>
+</ul>
+</li>
+<li><a href="#">MECH</a>
+<ul class="submenu113"><span>&#9660</span>
+<li><a href="#" onclick="faculty_regis();">Faculty</a></li>
+<li><a href="#" onclick="student_regis();">Student</a></li>
+</ul></li>
+<li><a href="#">CIVIL</a>
+<ul class="submenu114"><span>&#9660</span>
+<li><a href="#" onclick="faculty_regis();">Faculty</a></li>
+<li><a href="#" onclick="student_regis();">Student</a></li>
+</ul></li>
+<li><a href="#">CHEMICAL</a>
+<ul class="submenu115"><span>&#9660</span>
+<li><a href="#" onclick="faculty_regis();">Faculty</a></li>
+<li><a href="#" onclick="student_regis();">Student</a></li>
+</ul></li>
+<li><a href="#">EEE</a>
+<ul class="submenu116"><span>&#9660</span>
+<li><a href="#" onclick="faculty_regis();">Faculty</a></li>
+<li><a href="#" onclick="student_regis();">Student</a></li>
+</ul></li>
+</ul>
+</li>
+<li><img src="call.jpg" title="CONTACT"><!-- <img src="call.jpg" title="Contact"> -->
+<ul class="submenu4"><span>&#9660</span>
+<li><a href="#" onclick="address_visi();" >Contact Details</a></li>
+<li><a href="#" onclick="map_visi();">Google Map</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="fil_ter">
+	<h3 align="center"><u>STUDENT ID'S</u></h3>
+	<div>
+		Search ID here:<input type="text" name="" id="filter">
+	</div>
+	List of id's are:
+		<ol id="lists" type="1">
+			<li>N180140</li>
+			<li>N180261</li>
+			<li>N180228</li>
+			<li>N180226</li>
+			<li>N180194</li>
+			<li>N180177</li>
+			<li>N181164</li>
+			<li>N180015</li>
+			<li>N180530</li>
+			<li>N180674</li>
+			<li>N180108</li>
+			<li>N180100</li>
+			<li>N180007</li>
+			<li>N180142</li>
+			<li>N180132</li>
+			<li>N181200</li>
+			<li>N181178</li>
+			<li>N180034</li>
+			<li>N180654</li>
+			<li>N180765</li>
+			<li>N181135</li>
+			<li>N180001</li>
+			<li>N181180</li>
+			<li>N180135</li>
+			<li>N181256</li>
+		</ol>
+</div>
+<div id="notifications">
+	<div>
+		<h3 align="center"><u>NOTIFICATIONS</u></h3>
+		<marquee width="350px" onmouseover="stop()" onmouseout="start()" scrollamount="3" direction="up">
+		1.Circular for payment of Vasathi Deevena/Mess charges of the year 2021-22<br>________________________________________<br>
+		2.Circular to the Above Poverty Line(APL) students for payment of college tuitions fee for hte academic year 2021-22<br>________________________________<br>
+		3.Circular to students Nuzvid regarding Mess timings<br>_________________________________________<br>
+		4.Circular to students regarding Food court<br>_________________________________________<br>
+		5.Circular to students regarding Jaganna Vidya Deevena installment for the period of Jan,Feb and March of the academic year 2021-22<br>______________________________________<br></marquee>
+	</div>
+</div>
+<div id="student_regis">
+	 <center>
+	 	<form action="/paru.php" method="post" onsubmit= "return conf();">
+	 	<table>
+	 	<h2>Student Registration Form</h2>
+	 	<tr><td>FirstName:</td><td><input type="text" id="name" required ><label  id="n" style="color:red;visibility:hidden;">Invalid data..!!</label></td></tr>
+	 	<tr><td>Password:</td><td><input type="password" id="pass" required >*<img  src="eye2.jpg" id="i" onclick ="change();" ondblclick="unchange();"><label  id="pa" style="color:red;visibility:hidden;">Password has atleast 6 characters</label></td></tr> 
+	 	<tr><td><input type="reset" onclick="return conform();" value="reset"></td><td><input type="submit" value="Submit"></td></tr> 
+	 	</table> 
+	 </form>
+	 </center>
+</div>
+<div id="faculty_regis">
+	 <center>
+	 	<form action="/paru.php" method="post" onsubmit= "return conf1();">
+	 	<table>
+	 	<h2>Faculty Registration Form</h2>
+	 	<tr><td>FirstName:</td><td><input type="text" id="name1" required ><label  id="n1" style="color:red;visibility:hidden;">Invalid data..!!</label></td></tr>
+	 	<tr><td>Password:</td><td><input type="password" id="pass1" required >*<img  src="eye2.jpg" id="i1" onclick ="change1();" ondblclick="unchange1();"><label  id="pa1" style="color:red;visibility:hidden;">Password has atleast 6 characters</label></td></tr> 
+	 	<tr><td><input type="reset" onclick="return conform1();" value="reset"></td><td><input type="submit" value="Submit"></td></tr> 
+	 	</table> 
+	 </form>
+	 </center>
+</div>
+<center><div id="exam_regis">
+		<form action="/paru.php" method="post" onsubmit= "return conf2();">
+		<table>
+			<h2>Registration Form</h2>
+			<tr><td>FirstName:</td><td><input type="text" id="first" required ><label  id="f" style="color:red;visibility:hidden;">Invalid data..!!</label></td></tr> 
+			<tr><td>MiddleName:</td><td><input type="text" id="middle"><label  id="mi" style="color:red;visibility:hidden;">Invalid data..!!</label></td></tr>
+			 <tr><td>LastName:</td><td><input type="text" id="last" required><label  id="l" style="color:red;visibility:hidden;">Invalid data..!!</td></tr>
+			 	<tr><td>FullName:</td><td><input type="text" id="fulln" readonly></td></tr>
+             <tr><td colspan="2">This Registration Form can be used by Indian or USA:</td></tr>
+              <tr><td></td><td>Indian<input type="radio" name="j" id="r1" checked>USA<input type="radio" name="j" id="r2" checked></td></tr>
+             <tr><td>MobileNumber:</td><td><input type="number" id="mobile"><label  id="m1" style="color:red;visibility:hidden;">Enter India(10 digits) based phone number</label><label  id="m" style="color:red;visibility:hidden;">Enter USA based phone number</label></td></tr>
+             <tr><td>Password:</td><td><input type="password" id="pass2" required >*<img  src="eye2.jpg" id="i2" onclick ="change2();" ondblclick="unchange2();"><label  id="pa2" style="color:red;visibility:hidden;">Password has atleast 6 characters</label></td></tr> 
+			<tr><td>Hobbies:</td><td>Reading Books<input type="checkbox" id="c1">Singing<input type="checkbox" id="c2">Dancing<input type="checkbox" id="c3">Drawing<input type="checkbox" id="c4"><label  id="chi" style="color:red;visibility:hidden;">Please...select atleast two hobbies</label></td></tr>
+			<tr><td>Insert Image:</td><td><input type="file" id="file"><label  id="fi" style="color:red;visibility:hidden;">Insert an Image size<53kb</label></td></tr>
+				<tr><td>Email Id:</td><td><input type="email" id="em" required onfocus="email();"><label  id="emi" style="color:red;visibility:hidden;">Enter valid Email id</label></td></tr>
+				<tr><td>DOB:</td><td><input type="date" id="date" required></td><label  id="DOB" style="color:red;visibility:hidden;">Enter valid DOB!</label></tr>
+				<tr><td>Address:</td><td><textarea width="30px"></textarea></td></tr>
+			<center><div>
+			<tr id="myform1"><td>Add game which you are interested in:</td><td><input type="text"  id="game">
+			<button id="button">ADD</button></td></tr>
+		<tr><td>Search game:</td><td><input type="text"  id="filter1"></td>
+		<tr id="scrh"><td>List of Interested games are:</td>
+		<td><ul id="lists">
+			<li>Cricket<button class="delete">x</button></li>
+		</ul></td><tr> 
+		<tr><td colspan="2"><input type="checkbox" required>I agree to terms of policy and services of the company</td></tr>
+		<tr><td><input type="reset" onclick="return conform2();" value="reset"></td><td><input type="submit" value="Submit"></td></tr> 
+		</table>
+		</form>
+	</div>	
+	</center>
+<div id="Address">
+	<pre><b>Address and Directions</b>
+<b>Chancellor</b>
+Prof. K.C.Reddy
+Email: chancellor@rgukt.in
+
+<b>Head Office Address:</b>
+RGUKT - RK Valley Campus, Idupulapaya, Vempalli, Kadapa, Andhra Pradesh, Pin: 516330.
+
+<b>Camp Office Address:</b>
+RGUKT - Nuzvid Campus, Nuzvid, Krishna District, Pin:521202.
+<b>Director</b>
+Prof. G.V.R.Srinivasa Rao
+Email: director@rguktn.ac.in
+
+<b>Address:</b>
+The Director
+Rajiv Gandhi University of Knowledge Technologies,
+Mylavaram Road, Nuzvid,
+Krishna District,
+Andhra Pradesh - 521 202
+<b>Phone:</b>
+08656 235147
+<b>Office Fax:</b>
++91 08656 235150
+<b>Email:</b>
+director@rguktn.ac.in</pre>
+</div>
+<div id="map">
+	<p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7639.355798995549!2d80.8200511740159!3d16.792693303750077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3675e5f312c661%3A0xab7189f421622491!2sIIIT%20Nuzvid%20Campus%2C%20Nuzividu%2C%20Andhra%20Pradesh%20521202!5e0!3m2!1sen!2sin!4v1657424756196!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+</div>
+<div id="slidercontainer">  
+        <div class="showSlide fade">  
+            <img src="rgukt1.jpg" width="500px" height="400px" style="border-radius: 5px;" />  
+            <div class="content" style="color:black;">Main gate</div>  
+        </div>  
+        <div class="showSlide fade">  
+            <img src="rgukt2.jpg"  width="500px" height="400px"/>  
+            <div class="content" style="color:black;">Academic blocks</div>  
+        </div>  
+  
+        <div class="showSlide fade">  
+            <img src="rgukt3.jpg"  width="500px" height="400px"/>  
+            <div class="content">Campus Night view</div>  
+        </div>  
+        <div class="showSlide fade">  
+            <img src="rgukt4.jpg"  width="500px" height="400px" />  
+            <div class="content" style="color:black;">Labs</div>  
+        </div>  
+        <!-- Navigation arrows -->  
+        <a class="left" onclick="nextSlide(-1)">❮</a>  
+        <a class="right" onclick="nextSlide(1)">❯</a>  
+    </div>
+    <script type="text/javascript">
+		function visible()
+		{
+			document.getElementById("developer").style.visibility="visible";
+			hcc();
+		}
+		function invisible()
+		{
+			document.getElementById("developer").style.visibility="hidden";
+			vcc();
+		}
+		function hcc()
+		{
+			document.getElementById("imname").style.visibility="hidden";
+		}
+		function vcc()
+		{
+			document.getElementById("imname").style.visibility="visible";
+		}
+		function ver_nav_visible()
+		{
+			document.getElementById("ver-nav").style.visibility="visible";
+		}
+		function ver_nav_invisible()
+		{
+			document.getElementById("ver-nav").style.visibility="hidden";
+		}
+		function validate()
+		{
+			var fn=document.getElementById("name").value;
+			var n1=/[a-z,A-Z]$/;
+			var nn1=document.getElementById("name").value.match(n1);
+			if(!nn1 || fn.length<3)
+			{
+				document.getElementById("name").style.border="2px solid red";
+				document.getElementById("n").style.visibility="visible";
+				return false;
+			}
+			var pas=document.getElementById("pass").value;
+			if(pas.length<6)
+			{
+				document.getElementById("pass").style.border="2px solid red";
+				document.getElementById("pa").style.visibility="visible";
+				return false;
+			}
+		}
+		function change()
+		{
+			var im=document.getElementById("i").src="eye1.jpg";
+			document.getElementById("pass").type="text";
+
+		}
+		function unchange()
+		{
+			document.getElementById("i").src="eye2.jpg";
+			document.getElementById("pass").type="password";
+		}
+		function conform()
+		{
+			var con=confirm("do you want to reset?");
+			if(con)
+			{
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		function conf()
+		{
+			var co=confirm("do you want to submit?");
+			if(co)
+			{
+				return validate();
+			}
+			if(!co)
+			{
+				return false;
+			}
+		}
+		function validate1()
+		{
+			var fn=document.getElementById("name1").value;
+			var n1=/[a-z,A-Z]$/;
+			var nn1=document.getElementById("name1").value.match(n1);
+			if(!nn1 || fn.length<3)
+			{
+				document.getElementById("name1").style.border="2px solid red";
+				document.getElementById("n1").style.visibility="visible";
+				return false;
+			}
+			var pas=document.getElementById("pass1").value;
+			if(pas.length<6)
+			{
+				document.getElementById("pass1").style.border="2px solid red";
+				document.getElementById("pa1").style.visibility="visible";
+				return false;
+			}
+		}
+		function change1()
+		{
+			var im=document.getElementById("i1").src="eye1.jpg";
+			document.getElementById("pass1").type="text";
+
+		}
+		function unchange1()
+		{
+			document.getElementById("i1").src="eye2.jpg";
+			document.getElementById("pass1").type="password";
+		}
+		function conform1()
+		{
+			var con=confirm("do you want to reset?");
+			if(con)
+			{
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		function conf1()
+		{
+			var co=confirm("do you want to submit?");
+			if(co)
+			{
+				return validate1();
+			}
+			if(!co)
+			{
+				return false;
+			}
+		}
+		function student_regis()
+		{
+			document.getElementById("student_regis").style.visibility="visible";
+			document.getElementById("faculty_regis").style.visibility="hidden";
+			document.getElementById("fil_ter").style.visibility="hidden";
+			document.getElementById("notifications").style.visibility="hidden";
+			document.getElementById("Address").style.visibility="hidden";
+			document.getElementById("exam_regis").style.visibility="hidden"
+			document.getElementById("slidercontainer").style.visibility="hidden";
+			document.getElementById("map").style.visibility="hidden";
+
+		}
+		function faculty_regis()
+		{
+			document.getElementById("student_regis").style.visibility="hidden";
+			document.getElementById("faculty_regis").style.visibility="visible";
+			document.getElementById("fil_ter").style.visibility="hidden";
+			document.getElementById("notifications").style.visibility="hidden";
+			document.getElementById("slidercontainer").style.visibility="hidden";
+			document.getElementById("Address").style.visibility="hidden";
+			document.getElementById("exam_regis").style.visibility="hidden";
+			document.getElementById("map").style.visibility="hidden";
+		}
+		function validate2(){
+			var fn=document.getElementById("first").value;
+			var ln=document.getElementById("last").value;
+			var mn=document.getElementById("middle").value;
+			var n1=/[a-z,A-Z]$/;
+			var nn1=document.getElementById("first").value.match(n1);
+			if(!nn1 || fn.length<3){
+					document.getElementById("first").style.border="2px solid red";
+					document.getElementById("f").style.visibility="visible";
+					setTimeout(s,3000);
+					return false;
+			}
+			var nn2=document.getElementById("last").value.match(n1);
+			if(!nn2 || ln.length<3)
+			{
+				document.getElementById("last").style.border="2px solid red";
+				document.getElementById("l").style.visibility="visible";
+				setTimeout(s,3000);
+				return false;
+			}
+			var nn3=document.getElementById("middle").value.match(n1);
+			if(mn.length>0 && mn.length<3)
+			{
+				if(!nn3)
+				{
+					document.getElementById("middle").style.border="2px solid red";
+					document.getElementById("mi").style.visibility="visible";
+					setTimeout(s,3000);
+					return false;
+				}
+				document.getElementById("middle").style.border="2px solid red";
+				document.getElementById("mi").style.visibility="visible";
+				setTimeout(s,3000);
+				return false;
+			}
+			if(mn.length>4)
+			{
+				if(!nn3)
+				{
+					document.getElementById("middle").style.border="2px solid red";
+					document.getElementById("mi").style.visibility="visible";
+					setTimeout(s,3000);
+					return false;
+				}
+			}
+			var fulln=document.getElementById("fulln").value=fn+ln;
+			var r1=document.getElementById("r1").checked;
+			var r2=document.getElementById("r2").checked;
+			if(r1)
+			{
+				document.getElementById("mobile").type="number"
+				var mb=document.getElementById("mobile").value;
+				if(mb.length!=10)
+				{
+					document.getElementById("mobile").style.border="2px solid red";
+					document.getElementById("m1").style.visibility="visible";
+					setTimeout(s,3000);
+					return false;
+				}
+			}
+			else if(r2)
+			{
+				var p=/^\d{3}\-\d{3}\-\d{4}$/;
+				document.getElementById("mobile").type="text";
+				var mb1=document.getElementById("mobile").value.match(p);
+				if(!mb1)
+				{
+					document.getElementById("mobile").style.border="2px solid red";
+				    document.getElementById("m").style.visibility="visible";
+				    setTimeout(s,3000);
+					return false;
+				}
+			}
+			var pas=document.getElementById("pass2").value;
+			if(pas.length<6)
+			{
+				document.getElementById("pass2").style.border="2px solid red";
+				document.getElementById("pa2").style.visibility="visible";
+				setTimeout(s,3000);
+				return false;
+				
+			}
+			var count=0;
+			var c11=document.getElementById("c1").checked;
+			var c22=document.getElementById("c2").checked;
+			var c33=document.getElementById("c3").checked;
+			var c44=document.getElementById("c4").checked;
+  			if(c11)
+  			{
+  				count=count+1;
+  			}
+  			if(c22)
+  			{
+  				count=count+1;
+  			}
+  			if(c33)
+  			{
+  				count=count+1;
+  			}
+  			if(c44)
+  			{
+  				count=count+1;
+  			}
+  			if(count<2)
+  			{
+  				document.getElementById("chi").style.visibility="visible";
+  				setTimeout(s,3000);
+  				return false;
+  			}
+  			var size=document.getElementById("file").files[0].size;
+  			if(size>(53*1024))
+  			{
+				document.getElementById("fi").style.visibility="visible";
+				setTimeout(s,3000);
+			   return false;
+  			}
+  			function email(){
+  			var emil1=/^(([a-z,A-Z,0-9][a-z,A-Z,0-9,_,.]*)|((N|n)18(0|1)\d{3}))@((gmail)|(rguktn))$/;
+  			var mail1=document.getElementById("em").value
+  			var mail=document.getElementById("em").value.match(emil1);
+  			if(mail)
+  			{ 
+  				var pattern1="gmail";
+  				var pattern2="rguktn";
+  				var ma1=mail1.test(pattern1);
+				var ma2=mail1.test(pattern2);
+  				if(ma1)
+  				{
+  					var emil2=/^(([a-z,A-Z,0-9][a-z,A-Z,0-9,_,.]*)|((N|n)18(0|1)\d{3}))@gmail\.com$/;
+  					var mai1=document.getElementById("em").value.match(emil2);
+  					if(!mai1)
+  					{
+  						document.getElementById("em").style.border="2px solid red";
+						document.getElementById("emi").style.visibility="visible";
+						setTimeout(s,3000);
+						return false;
+  					}
+  				}
+  				if(ma2)
+  				{
+  					var emil3=/^(([a-z,A-Z,0-9][a-z,A-Z,0-9,_,.]*)|((N|n)18(0|1)\d{3}))@rguktn\.ac\.in$/;
+  					var mai2=document.getElementById("em").value.match(emil3);
+  					if(!mai2)
+  					{
+  						document.getElementById("em").style.border="2px solid red";
+						document.getElementById("emi").style.visibility="visible";
+						setTimeout(s,3000);
+						return false;
+  					}
+  				}
+  			}	
+  			}
+  			var d=document.getElementById("date").value;
+			var dd=new Date(d);
+			var ddd=dd.getFullYear();
+			var dddd=new Date();
+			var ddddd=dddd.getFullYear();
+			var cou=0;
+		    while(ddd<=ddddd)
+		    {
+		    	cou=cou+1;
+		    	ddd=ddd+1;
+		    }
+			if(cou<1)
+			{
+				document.getElementById("date").style.border="2px solid red";
+				document.getElementById("DOB").style.visibility="visible";
+				setTimeout(s,3000);
+				return false;
+			}
+		}
+		function change2()
+		{
+			var im=document.getElementById("i2").src="eye1.jpg";
+			document.getElementById("pass2").type="text";
+
+		}
+		function unchange2()
+		{
+			document.getElementById("i2").src="eye2.jpg";
+			document.getElementById("pass2").type="password";
+		}
+		function s()
+		{
+			document.getElementById("first").style.border="0px solid red";
+			document.getElementById("f").style.visibility="hidden";
+			document.getElementById("last").style.border="0px solid red";
+			document.getElementById("l").style.visibility="hidden";
+			document.getElementById("middle").style.border="0px solid red";
+			document.getElementById("mi").style.visibility="hidden";
+			document.getElementById("mobile").style.border="0px solid red";
+			document.getElementById("m").style.visibility="hidden";
+			document.getElementById("m1").style.visibility="hidden";
+			document.getElementById("pass2").style.border="0px solid red";
+			document.getElementById("pa2").style.visibility="hidden";
+			document.getElementById("chi").style.visibility="hidden";
+			document.getElementById("fi").style.visibility="hidden";
+		}
+		function conform2()
+		{
+			var con=confirm("do you want to reset?");
+			if(con)
+			{
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		function conf2()
+		{
+			var co=confirm("do you want to submit?");
+			if(co)
+			{
+				return validate2();
+			}
+			if(!co)
+			{
+				return false;
+			}
+		}
+		function exam_regis_visi()
+		{
+			document.getElementById("student_regis").style.visibility="hidden";
+			document.getElementById("faculty_regis").style.visibility="hidden";
+			document.getElementById("fil_ter").style.visibility="hidden";
+			document.getElementById("notifications").style.visibility="hidden";
+			document.getElementById("slidercontainer").style.visibility="hidden";
+			document.getElementById("Address").style.visibility="hidden";
+			document.getElementById("exam_regis").style.visibility="visible";
+			document.getElementById("map").style.visibility="hidden";
+		}
+		function address_visi()
+		{
+			document.getElementById("student_regis").style.visibility="hidden";
+			document.getElementById("faculty_regis").style.visibility="hidden";
+			document.getElementById("fil_ter").style.visibility="hidden";
+			document.getElementById("notifications").style.visibility="hidden";
+			document.getElementById("slidercontainer").style.visibility="hidden";
+			document.getElementById("Address").style.visibility="visible";
+			document.getElementById("exam_regis").style.visibility="hidden";
+			document.getElementById("map").style.visibility="hidden";
+		}
+		function map_visi()
+		{
+			document.getElementById("student_regis").style.visibility="hidden";
+			document.getElementById("faculty_regis").style.visibility="hidden";
+			document.getElementById("fil_ter").style.visibility="hidden";
+			document.getElementById("notifications").style.visibility="hidden";
+			document.getElementById("slidercontainer").style.visibility="hidden";
+			document.getElementById("Address").style.visibility="hidden";
+			document.getElementById("exam_regis").style.visibility="hidden";
+			document.getElementById("map").style.visibility="visible";
+		}
+	</script>  
+    <script type="text/javascript">  
+        var slide_index = 1;  
+        displaySlides(slide_index);  
+  
+        function nextSlide(n) {  
+            displaySlides(slide_index += n);  
+        }  
+  
+        function currentSlide(n) {  
+            displaySlides(slide_index = n);  
+        }  
+  
+        function displaySlides(n) {  
+            var i;  
+            var slides = document.getElementsByClassName("showSlide");  
+            if (n > slides.length) { slide_index = 1 }  
+            if (n < 1) { slide_index = slides.length }  
+            for (i = 0; i < slides.length; i++) {  
+                slides[i].style.display = "none";  
+            }  
+            slides[slide_index - 1].style.display = "block";  
+        }  
+    </script> 
+  <script type="text/javascript" src="project.js"></script> 
+<footer id="main-footer">
+	<p> <small>copy right &copy;2022 #Parvathi Kasimkota</small></p>
+	<div class="foot">
+		View Count:
+	<img src="https://hitwebcounter.com/counter/counter.php?page=7829756& style=0001&nbdigits=6&type=page&initCount=100000" title="Free Counter" alt="web counter" border="0" />
+	</div>
+</footer>
+</body>
+</html>
