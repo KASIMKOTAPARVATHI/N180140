@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WT EXAM1</title>
+	<link rel="stylesheet" type="text/css" href="exam.css">
+	<style type="text/css">
+		#registration_form
+		{
+			font-size: 20px;
+			background-color: lavender;
+			width: 700px;
+			height: 700px;
+			border: 3px solid black;
+			border-radius: 10px;
+			animation-name: slider;
+			animation-iteration-count: infinite;
+			animation-duration: 20s;
+			background-repeat: no-repeat;
+
+		}
+		#registration_form h1
+    	{
+      		border: 2px solid black;
+      		width: 300px;
+      		height: 100px;
+      		background-color: darkblue;
+      		color: white;
+      		border-radius: 10px;
+    	}
+    	#registration_form #span
+    	{
+    		color: red;
+    		font-size: 15px;
+    		text-decoration: none;
+    	}
+    	#registration_form h1:hover
+    	{
+    		background-color: green;
+    		color: yellow;
+    	}
+	</style>
+	<script type="text/javascript">
+		function validate()
+		{
+			var fn=document.getElementById("username").value;
+			var n1=/^F[a-z,A-Z]*$/;
+			var nn1=document.getElementById("username").value.match(n1);
+			if(!nn1 || fn.length<3 || fn.length>9)
+			{
+					document.getElementById("username").style.border="2px solid red";
+					document.getElementById("username").style.backgroundColor="red";
+					document.getElementById("u").style.visibility="visible";
+					setTimeout(s,3000);
+					return false;
+			}
+  			var emil1=/^[a-z,A-Z,0-9][a-z,A-Z,0-9,_,.]*@([a-z,A-Z]{3,5})\.(com|in|edu|net)$/;
+  			var mail=document.getElementById("em").value.match(emil1);
+  			if(!mail)
+  			{ 
+  				document.getElementById("em").style.border="2px solid red";
+  				document.getElementById("em").style.backgroundColor="red";
+				document.getElementById("emi").style.visibility="visible";
+				setTimeout(s,3000);
+				return false;
+  			}
+  			var r1=document.getElementById("r1").checked;
+			var r2=document.getElementById("r2").checked;
+			if(r1)
+			{   
+				var pp1=/^(977)\d{7}$/
+				document.getElementById("mobile").type="number"
+				var mb=document.getElementById("mobile").value.match(pp1);
+				if(!mb)
+				{
+					document.getElementById("mobile").style.border="2px solid red";
+					document.getElementById("mobile").style.backgroundColor="red";
+					document.getElementById("m1").style.visibility="visible";
+					setTimeout(s,3000);
+					return false;
+				}
+			}
+			else if(r2)
+			{
+				var p=/^\d{4}\-\d{4}\-\d{4}$/;
+				document.getElementById("mobile").type="text";
+				var mb1=document.getElementById("mobile").value.match(p);
+				if(!mb1)
+				{
+					document.getElementById("mobile").style.border="2px solid red";
+					document.getElementById("mobile").style.backgroundColor="red";
+				    document.getElementById("m").style.visibility="visible";
+				    setTimeout(s,3000);
+					return false;
+				}
+			}
+			var r3=document.getElementById("r3").checked;
+			var r4=document.getElementById("r4").checked;
+			var r5=document.getElementById("r5").checked;
+			var r6=document.getElementById("r6").checked;
+			var r7=document.getElementById("r7").checked;
+			if(r3||r7||r4)
+			{
+				prompt("do you want beer?");
+			}
+			var r8=document.getElementById("r8").checked;
+			var r9=document.getElementById("r9").checked;
+			if(r8)
+			{
+				var p1=/^(SBIN)\d{7}$/;
+				var p11=document.getElementById("payment").value.match(p1);
+				if(!p11)
+				{
+					document.getElementById("payment").style.border="2px solid red";
+					document.getElementById("payment").style.backgroundColor="red";
+					document.getElementById("pay1").style.visibility="visible";
+				    setTimeout(s,3000);
+					return false;
+				}
+			}
+			else if(r9)
+			{
+				var p2=/^\d{11}$/;
+				var p22=document.getElementById("payment").value.match(p2);
+				if(!p22)
+				{
+					document.getElementById("payment").style.border="2px solid red";
+					document.getElementById("payment").style.backgroundColor="red";
+				    document.getElementById("pay").style.visibility="visible";
+				    setTimeout(s,3000);
+					return false;
+				}
+			}
+			var r10=document.getElementById("r10").checked;
+			var r11=document.getElementById("r11").checked;
+			var r12=document.getElementById("r12").checked;
+			var r13=document.getElementById("r13").checked;
+  			var rent=document.getElementById("days").value;
+  			if(r10||r11)
+  			{
+  				var totalrent=rent*2000;
+  				document.getElementById("ren").value=totalrent;
+  			}
+  			if(r12||r13)
+  			{
+  				var totalrent1=rent*3000;
+  				var t_rent=document.getElementById("ren").value=totalrent1;
+  			}
+			var count=0;
+			var c11=document.getElementById("c1").checked;
+			var c22=document.getElementById("c2").checked;
+			var c33=document.getElementById("c3").checked;
+			var c44=document.getElementById("c4").checked;
+			var c55=document.getElementById("c5").checked;
+			var c66=document.getElementById("c6").checked;
+  			if(c11)
+  			{
+  				count=count+1;
+  			}
+  			if(c22)
+  			{
+  				count=count+1;
+  			}
+  			if(c33)
+  			{
+  				count=count+1;
+  			}
+  			if(c44)
+  			{
+  				count=count+1;
+  			}
+  			if(c55)
+  			{
+  				count=count+1;
+  			}
+  			if(c66)
+  			{
+  				count=count+1;
+  			}
+  			if(count<1)
+  			{
+  				document.getElementById("che").style.visibility="visible";
+  				setTimeout(s,3000);
+  				return false;
+  			}
+  		}
+		function conform()
+		{
+			var con=confirm("do you want to reset?");
+			if(con)
+			{
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		function conf()
+		{
+			var co=confirm("do you want to submit?");
+			if(co)
+			{
+				return validate();
+			}
+			if(!co)
+			{
+				return false;
+			}
+		}
+		function s()
+		{
+			document.getElementById("username").style.border="0px solid red";
+			document.getElementById("username").style.backgroundColor="white";
+			document.getElementById("u").style.visibility="hidden";
+			document.getElementById("em").style.border="0px solid red";
+			document.getElementById("em").style.backgroundColor="white";
+			document.getElementById("emi").style.visibility="hidden";
+			document.getElementById("mobile").style.border="0px solid red";
+			document.getElementById("mobile").style.backgroundColor="white";
+			document.getElementById("m").style.visibility="hidden";
+			document.getElementById("m1").style.visibility="hidden";
+			document.getElementById("payment").style.border="0px solid red";
+			document.getElementById("payment").style.backgroundColor="white";
+			document.getElementById("pay").style.visibility="hidden";
+			document.getElementById("pay1").style.visibility="hidden";
+			document.getElementById("che").style.visibility="hidden";
+		}
+		function display()
+		{
+			document.getElementById("username").value=document.getElementById("username").value.toUpperCase();
+		}
+	</script>
+</head>
+<body>
+<center><div id="registration_form">
+		<form action="success.html" method="post" onsubmit= "return conf();">
+		<table>
+			<h1><u>F1H20</u><span id="span">RGUKT</span></h1>
+			<tr><td>UserName:</td><td><input type="text" id="username" required ><label  id="u" style="color:red;visibility:hidden;">Invalid data..!!</label></td></tr> 
+			<tr><td>Email Id:</td><td><input type="email" id="em" required ><label  id="emi" style="color:red;visibility:hidden;">Enter valid Email id</label></td></tr>
+			<tr><td></td><td>10 digits mobile number<input type="radio" name="j" id="r1" checked>12 digit number<input type="radio" name="j" id="r2" checked></td></tr>
+             <tr><td>MobileNumber:</td><td><input type="number" id="mobile"><label  id="m1" style="color:red;visibility:hidden;">Enter 10 digits phone number</label><label  id="m" style="color:red;visibility:hidden;">Enter 12 digits type phone number</label></td></tr>
+             <tr><td>you come from:</td><td>India<input type="radio" name="j1" id="r6" checked>America<input type="radio" name="j1" id="r7" checked>England<input type="radio" name="j1" id="r3" checked>Germany<input type="radio" name="j1" id="r4" checked>Firm representative of RGUKT(Student or Faculty)<input type="radio" name="j1" id="r5" checked></td></tr>
+             <tr><td>Payment Type:</td><td>Accepted through DD number<input type="radio" name="j2" id="r8" checked>Accepted through Account Number<input type="radio" name="j2" id="r9" checked></td></tr>
+             <tr><td>(DD Number/Account Number):</td><td><input type="text" id="payment"><label  id="pay1" style="color:red;visibility:hidden;">Enter valid DD Number</label><label  id="pay" style="color:red;visibility:hidden;">Enter valid Account Number</label></td></tr>
+             <tr><td>Choose Accomodation:</td><td>INuzvid<input type="radio" name="j3" id="r10" checked>IKadapa<input type="radio" name="j3" id="r11" checked>ISKLM<input type="radio" name="j3" id="r12" checked>IONGOLE<input type="radio" name="j3" id="r13" checked></td></tr>
+             <tr><td>Services Required:</td><td>Breakfast<input type="checkbox" id="c1">Lunch<input type="checkbox" id="c2">Snacks<input type="checkbox" id="c3">Tea<input type="checkbox" id="c4">Coffee<input type="checkbox" id="c5">Eggs<input type="checkbox" id="c6"><label  id="che" style="color:red;visibility:hidden;">Please...select your requirements</label></td></tr>
+             <tr><td>Enter no.of days staying:</td><td><input type="number" id="days" required ><label  id="d" style="color:red;visibility:hidden;">Invalid data..!!</label></td></tr> 
+             <tr><td>Total Rent:</td><td><input type="text" id="ren" readonly></td></tr> 
+			<tr><td><input type="reset" onclick="return conform();" value="reset"></td><td><input type="submit" value="Submit"></td></tr> 
+		</table>
+	</form>
+</div>
+</center>
+<script type="text/javascript">
+	var d=document.getElementById("username");
+	d.addEventListener('keyup',display);
+</script>
+</body>
+</html>
